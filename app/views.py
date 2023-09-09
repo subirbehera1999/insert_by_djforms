@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from app.forms import *
 from app.models import *
+from django.http import HttpResponse
 # Create your views here.
 def insert_student(request):
     SFO=StudentForm()
@@ -17,6 +18,9 @@ def insert_student(request):
             SAO=Student.objects.all()
             d1={'SAO':SAO}
             return render(request,'display_student.html',d1)
+        else:
+            return HttpResponse("invalid data")
+
 
 
 
